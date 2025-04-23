@@ -391,18 +391,18 @@ const CheckoutComponent: React.FC = () => {
                     Thông tin thanh toán
                   </h4>
                   {isAddress && (
-                  <div className="button-address">
-                    <EnvironmentOutlined />
-                    <span style={{ marginLeft: "5px" }}>
-                      Địa chỉ mặc định của bạn
-                    </span>
-                    <Switch
-                      size="small"
-                      style={{ marginLeft: "10px" }}
-                      defaultChecked={false}
-                      onChange={onChange}
-                    />
-                  </div>
+                    <div className="button-address">
+                      <EnvironmentOutlined />
+                      <span style={{ marginLeft: "5px" }}>
+                        Địa chỉ mặc định của bạn
+                      </span>
+                      <Switch
+                        size="small"
+                        style={{ marginLeft: "10px" }}
+                        defaultChecked={false}
+                        onChange={onChange}
+                      />
+                    </div>
                   )}
                   <div>
                     <div className="col-lg-6" style={{ width: "100%" }}>
@@ -494,9 +494,25 @@ const CheckoutComponent: React.FC = () => {
                           placeholder="*Nhập địa chỉ của bạn"
                           value={shipAddress}
                           onChange={(e) => setShipAddress(e.target.value)}
+                          onBlur={() => {
+                            // Kiểm tra nếu địa chỉ không rỗng và có ít nhất 5 ký tự
+                            if (shipAddress.trim().length < 5) {
+                              alert("Địa chỉ phải có ít nhất 5 ký tự.");
+                            }
+
+                            // Kiểm tra định dạng địa chỉ
+                            const addressRegex =
+                              /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9\s,.-]+$/;
+                            if (!addressRegex.test(shipAddress)) {
+                              alert(
+                                "Địa chỉ không hợp lệ. Địa chỉ phải chứa chữ cái và số."
+                              );
+                            }
+                          }}
                         />
                       </div>
                     </div>
+
                     <div className="col-lg-12">
                       <div className="form-group">
                         <label
