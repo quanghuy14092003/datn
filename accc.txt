@@ -1,0 +1,5 @@
+
+Thông tin cấu hình:
+Terminal ID / Mã Website (vnp_TmnCode): WSYNHVZN
+
+Secret Key / Chuỗi bí mật tạo checksum (vnp_HashSecret): HT3GU87KJQQEZ8V6XKFBNNCRBMM4SYBX
